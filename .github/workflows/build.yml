@@ -41,18 +41,10 @@ jobs:
       - name: Build geoip files
         run: |
           go run ./
-
-      - name: Generate sha256 checksum for dat files
-        run: |
-          cd ./output/dat || exit 1
-          for name in $(ls *.dat); do
-            sha256sum ${name} > ./${name}.sha256sum
-          done
           
       - name: Move files to publish directory
         run: |
           mkdir -p publish
-          mv ./output/dat/*.dat ./output/dat/*.sha256sum *.gz *.zip ./publish/
           cp -fpPR ./output/text ./publish
 
       - name: Git push assets to "release" branch
@@ -66,9 +58,6 @@ jobs:
           git commit -m "${{ env.RELEASE_NAME }}"
           git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u geoip release
-
-      - name: Remove some files to avoid publishing to GitHub release
-        run: rm -rf ./publish/*.{gz,zip} ./publish/text
 
       - name: Upload files to GitHub release
         uses: svenstaro/upload-release-action@v2
