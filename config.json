@@ -24,7 +24,7 @@
       "type": "text",
       "action": "output",
       "args": {
-        "outputName": "cn.txt",
+        "outputDir": "./publish",
         "wantedList": ["cn"]
       }
     },
