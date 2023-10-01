@@ -38,6 +38,10 @@ jobs:
           chmod +x asn.sh
           ./asn.sh
 
+      - name: Build geoip files
+        run: |
+          go run ./
+
       - name: Generate sha256 checksum for dat files
         run: |
           cd ./output/dat || exit 1
