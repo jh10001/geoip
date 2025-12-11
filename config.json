@@ -314,6 +314,15 @@
     },
     {
       "type": "text",
+      "action": "output",
+      "args": {
+        "outputDir": "./output",
+        "outputExtension": ".txt",
+        "wantedList": ["cn"]
+      }
+    },
+    {
+      "type": "text",
       "action": "output"
     },
     {
