@@ -87,6 +87,7 @@ jobs:
         run: |
           go build ./
           ./geoip convert -c ./config.json
+          cp ./output/text/cn.txt ./output/cn.txt
 
       - name: Verify mmdb files
         run: |
